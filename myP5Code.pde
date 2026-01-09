@@ -4,18 +4,32 @@ void setup() {
 }
 
 //🎯Variable Declarations Go Here
-
-
+var UFOX=26
+var BeamBottom=74
+var BeamMove=2
 //🟢Draw Procedure - Runs on Repeat
 draw = function(){
  
   background(255,255,255,0);
-  
+  //ufo
+ fill(180, 181, 179) 
+ellipse(UFOX,67,50,20);
+//beam
+fill(141, 245, 66);
+quad(291,73,309,73,371,BeamBottom,238,BeamBottom);
 
+textSize(40);
+text("🐄",270,360);
 
-
-
-
+UFOX+=2
+if(UFOX > 300){
+UFOX = 300;
+BeamBottom+=BeamMove
+};
+if(BeamBottom > 400){
+    BeamMove-=-2
+    BeamBottom+=BeamMove
+};
   //Show x y values when mousepressed
   if(mousePressed){showXYPositions();}
 
