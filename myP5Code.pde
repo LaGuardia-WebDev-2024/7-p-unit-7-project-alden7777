@@ -7,28 +7,49 @@ void setup() {
 var UFOX=26
 var BeamBottom=74
 var BeamMove=2
+var CowY=360
+var cowDown = 0; //false
+
+
+
+
 //🟢Draw Procedure - Runs on Repeat
 draw = function(){
  
   background(255,255,255,0);
+
+ 
   //ufo
  fill(180, 181, 179) 
 ellipse(UFOX,67,50,20);
 //beam
+noStroke();
 fill(141, 245, 66);
-quad(291,73,309,73,371,BeamBottom,238,BeamBottom);
-
+quad(291,74,309,74,371,BeamBottom,238,BeamBottom);
+//cow
 textSize(40);
-text("🐄",270,360);
+text("🐄",270,CowY);
 
-UFOX+=2
+UFOX+=4
 if(UFOX > 300){
 UFOX = 300;
 BeamBottom+=BeamMove
 };
 if(BeamBottom > 400){
     BeamMove-=-2
-    BeamBottom+=BeamMove
+    
+    CowY-=7
+
+};
+if(CowY<77){
+CowY=77
+BeamBottom=74
+};
+if(CowY==77 && BeamBottom==74){
+CowY-=500
+};
+if(CowY<-400){
+    UFOX+=400
 };
   //Show x y values when mousepressed
   if(mousePressed){showXYPositions();}
